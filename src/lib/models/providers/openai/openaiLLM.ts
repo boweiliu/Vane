@@ -175,13 +175,13 @@ class OpenAILLM extends BaseLLM<OpenAIConfig> {
                   arguments: tc.function?.arguments || '',
                 };
                 recievedToolCalls.push(call);
-                return { ...call, arguments: parse(call.arguments || '{}') };
+                return { ...call, arguments: call.arguments.trim() ? parse(call.arguments) : {} };
               } else {
                 const existingCall = recievedToolCalls[tc.index];
                 existingCall.arguments += tc.function?.arguments || '';
                 return {
                   ...existingCall,
-                  arguments: parse(existingCall.arguments),
+                  arguments: existingCall.arguments.trim() ? parse(existingCall.arguments) : {},
                 };
               }
             }) || [],
