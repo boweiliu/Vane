@@ -39,3 +39,7 @@ db.sqlite
 /searxng
 
 certificates
+
+# Local runtime / scratch artifacts
+session_id.txt
+package-lock.json
